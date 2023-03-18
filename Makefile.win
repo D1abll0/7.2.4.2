@@ -1,0 +1,52 @@
+# Project: main
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = obj/glad.o obj/main.o obj/mesh.o obj/stb_image.o obj/animator.o obj/animation.o obj/bone.o obj/model_animation.o obj/model_manager.o
+LINKOBJ  = obj/glad.o obj/main.o obj/mesh.o obj/stb_image.o obj/animator.o obj/animation.o obj/bone.o obj/model_animation.o obj/model_manager.o
+LIBS     = -L"D:/programs/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"D:/programs/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -L"D:/programs/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib32" -static-libgcc -lopengl32 -lglu32 -lglfw3dll -lassimp -pg -g3
+INCS     = -I"D:/programs/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"D:/programs/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/programs/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"D:/programs/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"D:/programs/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/programs/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/programs/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = main.exe
+CXXFLAGS = $(CXXINCS) -pg -g3
+CFLAGS   = $(INCS) -pg -g3
+DEL      = D:\programs\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+obj/glad.o: src/glad.c
+	$(CPP) -c src/glad.c -o obj/glad.o $(CXXFLAGS)
+
+obj/main.o: src/main.cpp
+	$(CPP) -c src/main.cpp -o obj/main.o $(CXXFLAGS)
+
+obj/mesh.o: src/mesh.cpp
+	$(CPP) -c src/mesh.cpp -o obj/mesh.o $(CXXFLAGS)
+
+obj/stb_image.o: src/stb_image.cpp
+	$(CPP) -c src/stb_image.cpp -o obj/stb_image.o $(CXXFLAGS)
+
+obj/animator.o: src/animator.cpp
+	$(CPP) -c src/animator.cpp -o obj/animator.o $(CXXFLAGS)
+
+obj/animation.o: src/animation.cpp
+	$(CPP) -c src/animation.cpp -o obj/animation.o $(CXXFLAGS)
+
+obj/bone.o: src/bone.cpp
+	$(CPP) -c src/bone.cpp -o obj/bone.o $(CXXFLAGS)
+
+obj/model_animation.o: src/model_animation.cpp
+	$(CPP) -c src/model_animation.cpp -o obj/model_animation.o $(CXXFLAGS)
+
+obj/model_manager.o: src/model_manager.cpp
+	$(CPP) -c src/model_manager.cpp -o obj/model_manager.o $(CXXFLAGS)
